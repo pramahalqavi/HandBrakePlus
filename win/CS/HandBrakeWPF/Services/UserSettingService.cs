@@ -1,4 +1,4 @@
-﻿// --------------------------------------------------------------------------------------------------------------------
+// --------------------------------------------------------------------------------------------------------------------
 // <copyright file="UserSettingService.cs" company="HandBrake Project (http://handbrake.fr)">
 //   This file is part of the HandBrake source code - It may be used under the terms of the GNU General Public License.
 // </copyright>
@@ -305,6 +305,7 @@ namespace HandBrakeWPF.Services
             defaults.Add(UserSettingConstants.RemovePunctuation, false);
             defaults.Add(UserSettingConstants.FileOverwriteBehaviour, 0);
             defaults.Add(UserSettingConstants.UseM4v, 0);
+            defaults.Add(UserSettingConstants.PreserveFileTimestamps, false);
 
             // When Done
             defaults.Add(UserSettingConstants.SendFile, false);

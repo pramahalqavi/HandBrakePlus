@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -557,6 +557,9 @@ Bitrate will vary source to source.</value>
   </data>
   <data name="OptionsView_LaunchsHelp" xml:space="preserve">
     <value>Launches the documentation website located at https://handbrake.fr/docs</value>
+  </data>
+  <data name="Options_PreserveFileTimestamps" xml:space="preserve">
+    <value>Copy the creation and last modified timestamps from the source file to the encoded output file.</value>
   </data>
   <data name="Options_RemovePunctuation" xml:space="preserve">
     <value>Dash (-), Period (.) and Comma (,)</value>

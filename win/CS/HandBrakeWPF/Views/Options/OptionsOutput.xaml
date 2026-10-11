@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="HandBrakeWPF.Views.Options.OptionsOutput"
+<UserControl x:Class="HandBrakeWPF.Views.Options.OptionsOutput"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -142,6 +142,7 @@
                     <CheckBox Content="{x:Static Properties:Resources.Options_TitleCase}" IsChecked="{Binding ChangeToTitleCase}" />
                     <CheckBox Content="{x:Static Properties:Resources.Options_ReplaceUnderscores}" IsChecked="{Binding RemoveUnderscores}"/>
                     <CheckBox Content="{x:Static Properties:Resources.Options_RemovePunctuation}" ToolTip="{x:Static Properties:ResourcesTooltips.Options_RemovePunctuation}" IsChecked="{Binding RemovePunctuation}"/>
+                    <CheckBox Content="{x:Static Properties:Resources.Options_PreserveFileTimestamps}" ToolTip="{x:Static Properties:ResourcesTooltips.Options_PreserveFileTimestamps}" IsChecked="{Binding PreserveFileTimestamps}"/>
                 </StackPanel>
 
                 <StackPanel Orientation="Horizontal" Margin="0,15,0,0">

@@ -1,4 +1,4 @@
-﻿// --------------------------------------------------------------------------------------------------------------------
+// --------------------------------------------------------------------------------------------------------------------
 // <copyright file="PrePostActionService.cs" company="HandBrake Project (http://handbrake.fr)">
 //   This file is part of the HandBrake source code - It may be used under the terms of the GNU General Public License.
 // </copyright>
@@ -96,6 +96,11 @@ namespace HandBrakeWPF.Services
             // Send the file to the users requested application
             if (e.Successful)
             {
+                if (this.userSettingService.GetUserSetting<bool>(UserSettingConstants.PreserveFileTimestamps))
+                {
+                    this.PreserveFileTimestamps(e.SourceFileName, e.FileName);
+                }
+
                 this.SendToApplication(e.SourceFileName, e.FileName, e.ErrorCode);
             }
 
@@ -307,6 +312,42 @@ namespace HandBrakeWPF.Services
             catch (Exception ex)
             {
                 this.ServiceLogMessage("Unable to play sound. Unknown Reason." + Environment.NewLine + ex);
+            }
+        }
+
+        private void PreserveFileTimestamps(string sourcePath, string destinationPath)
+        {
+            try
+            {
+                if (string.IsNullOrWhiteSpace(sourcePath) || string.IsNullOrWhiteSpace(destinationPath))
+                {
+                    return;
+                }
+
+                if (File.Exists(sourcePath) && File.Exists(destinationPath))
+                {
+                    DateTime creationTimeUtc = File.GetCreationTimeUtc(sourcePath);
+                    DateTime lastWriteTimeUtc = File.GetLastWriteTimeUtc(sourcePath);
+
+                    File.SetCreationTimeUtc(destinationPath, creationTimeUtc);
+                    File.SetLastWriteTimeUtc(destinationPath, lastWriteTimeUtc);
+
+                    this.ServiceLogMessage($"Preserved timestamps from '{sourcePath}' to '{destinationPath}' (Created: {creationTimeUtc.ToLocalTime()}, Modified: {lastWriteTimeUtc.ToLocalTime()})");
+                }
+                else if (Directory.Exists(sourcePath) && File.Exists(destinationPath))
+                {
+                    DateTime creationTimeUtc = Directory.GetCreationTimeUtc(sourcePath);
+                    DateTime lastWriteTimeUtc = Directory.GetLastWriteTimeUtc(sourcePath);
+
+                    File.SetCreationTimeUtc(destinationPath, creationTimeUtc);
+                    File.SetLastWriteTimeUtc(destinationPath, lastWriteTimeUtc);
+
+                    this.ServiceLogMessage($"Preserved directory timestamps from '{sourcePath}' to '{destinationPath}' (Created: {creationTimeUtc.ToLocalTime()}, Modified: {lastWriteTimeUtc.ToLocalTime()})");
+                }
+            }
+            catch (Exception ex)
+            {
+                this.ServiceLogMessage($"Warning: Failed to preserve file timestamps: {ex.Message}");
             }
         }
 

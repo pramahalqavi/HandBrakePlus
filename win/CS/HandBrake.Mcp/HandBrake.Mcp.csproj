@@ -1,0 +1,29 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net10.0</TargetFramework>
+    <EnableWindowsTargeting>true</EnableWindowsTargeting>
+    <PackageId>HandBrake.Mcp</PackageId>
+    <Authors>HandBrake Team</Authors>
+    <Company>HandBrake Team</Company>
+    <Product>HandBrake.Mcp</Product>
+    <Copyright>Copyright © 2003-2026 HandBrake Team</Copyright>
+    <Description>Model Context Protocol (MCP) server for HandBrake.</Description>
+    <AssemblyVersion>1.11.0.0</AssemblyVersion>
+    <Platforms>AnyCPU</Platforms>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <AssemblyName>HandBrake.Mcp</AssemblyName>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    <AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
+    <FileVersion>1.11.0.0</FileVersion>
+    <Version>1.11.0</Version>
+    <LangVersion>latest</LangVersion>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\HandBrake.Interop\HandBrake.Interop.csproj" />
+    <ProjectReference Include="..\HandBrake.App.Core\HandBrake.App.Core.csproj" />
+  </ItemGroup>
+
+</Project>

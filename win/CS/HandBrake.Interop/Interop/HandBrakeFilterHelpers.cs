@@ -1,4 +1,4 @@
-﻿// --------------------------------------------------------------------------------------------------------------------
+// --------------------------------------------------------------------------------------------------------------------
 // <copyright file="HandBrakeFilterHelpers.cs" company="HandBrake Project (https://handbrake.fr)">
 //   This file is part of the HandBrake source code - It may be used under the terms of the GNU General Public License.
 // </copyright>
@@ -38,8 +38,6 @@ namespace HandBrake.Interop.Interop
             filters.Add(new HBFilter((int)hb_filter_ids.HB_FILTER_YADIF, "yadif", "Deinterlace"));
             filters.Add(new HBFilter((int)hb_filter_ids.HB_FILTER_BWDIF, "bwdif", "Deinterlace"));
             filters.Add(new HBFilter((int)hb_filter_ids.HB_FILTER_DEBLOCK, "deblock"));
-            filters.Add(new HBFilter((int)hb_filter_ids.HB_FILTER_DEBAND, "deband"));
-            filters.Add(new HBFilter((int)hb_filter_ids.HB_FILTER_BM3D, "bm3d", "Denoise"));
             filters.Add(new HBFilter((int)hb_filter_ids.HB_FILTER_NLMEANS, "nlmeans", "Denoise"));
             filters.Add(new HBFilter((int)hb_filter_ids.HB_FILTER_HQDN3D, "hqdn3d", "Denoise"));
             filters.Add(new HBFilter((int)hb_filter_ids.HB_FILTER_CHROMA_SMOOTH, "chromasmooth"));

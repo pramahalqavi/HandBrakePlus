@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -1249,6 +1249,9 @@ Hint: File overwrite behaviour can be controlled in preferences. </value>
   </data>
   <data name="Options_QsvDecodeForNonFullPath" xml:space="preserve">
     <value>Also use QuickSync decoding when not using a QuickSync encoder. (i.e. x265) </value>
+  </data>
+  <data name="Options_PreserveFileTimestamps" xml:space="preserve">
+    <value>Preserve source file creation and modification dates</value>
   </data>
   <data name="Options_RemovePunctuation" xml:space="preserve">
     <value>Remove common punctuation</value>

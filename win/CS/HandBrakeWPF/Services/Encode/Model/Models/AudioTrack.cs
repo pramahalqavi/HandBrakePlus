@@ -1,4 +1,4 @@
-﻿// --------------------------------------------------------------------------------------------------------------------
+// --------------------------------------------------------------------------------------------------------------------
 // <copyright file="AudioTrack.cs" company="HandBrake Project (http://handbrake.fr)">
 //   This file is part of the HandBrake source code - It may be used under the terms of the GNU General Public License.
 // </copyright>
@@ -526,7 +526,7 @@ namespace HandBrakeWPF.Services.Encode.Model.Models
 
                 if (this.ScannedTrack != null)
                 {
-                    string layout = this.scannedTrack.ChannelLayout;
+                    long layout = this.scannedTrack.ChannelLayout;
                     bool keep = PassthruTracks != null ? PassthruTracks() : true;
                     HBMixdown currentMixdown = HandBrakeEncoderHelpers.GetMixdown(this.mixDown);
                     this.TrackName = HandBrakeEncoderHelpers.GetAutonameAudioTrack(this.TrackName,

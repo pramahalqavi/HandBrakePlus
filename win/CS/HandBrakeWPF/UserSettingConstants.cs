@@ -1,4 +1,4 @@
-﻿// --------------------------------------------------------------------------------------------------------------------
+// --------------------------------------------------------------------------------------------------------------------
 // <copyright file="UserSettingConstants.cs" company="HandBrake Project (http://handbrake.fr)">
 //   This file is part of the HandBrake source code - It may be used under the terms of the GNU General Public License.
 // </copyright>
@@ -101,5 +101,6 @@ namespace HandBrakeWPF
         public const string IsLegacyMenuShown = "IsLegacyMenuShown";
         public const string DefaultRangeMode = "DefaultRangeMode";
         public const string PresetUiType = "PresetUiType";
+        public const string PreserveFileTimestamps = "PreserveFileTimestamps";
     }
 }

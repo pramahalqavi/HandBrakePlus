@@ -1,4 +1,4 @@
-﻿// --------------------------------------------------------------------------------------------------------------------
+// --------------------------------------------------------------------------------------------------------------------
 // <copyright file="OptionsViewModel.cs" company="HandBrake Project (http://handbrake.fr)">
 //   This file is part of the HandBrake source code - It may be used under the terms of the GNU General Public License.
 // </copyright>
@@ -108,6 +108,7 @@ namespace HandBrakeWPF.ViewModels
         private bool whenDonePerformActionImmediately;
         private AppThemeMode appThemeMode;
         private bool alwaysUseDefaultPath;
+        private bool preserveFileTimestamps;
         private bool pauseOnLowBattery;
         private int lowBatteryLevel;
         private string whenDoneAudioFileFullPath;
@@ -657,6 +658,21 @@ namespace HandBrakeWPF.ViewModels
 
                 this.alwaysUseDefaultPath = value;
                 this.NotifyOfPropertyChange(() => this.AlwaysUseDefaultPath);
+            }
+        }
+
+        public bool PreserveFileTimestamps
+        {
+            get => this.preserveFileTimestamps;
+            set
+            {
+                if (value == this.preserveFileTimestamps)
+                {
+                    return;
+                }
+
+                this.preserveFileTimestamps = value;
+                this.NotifyOfPropertyChange(() => this.PreserveFileTimestamps);
             }
         }
 
@@ -1621,6 +1637,8 @@ namespace HandBrakeWPF.ViewModels
 
             this.UseIsoDateFormat = this.userSettingService.GetUserSetting<bool>(UserSettingConstants.UseIsoDateFormat);
 
+            this.PreserveFileTimestamps = this.userSettingService.GetUserSetting<bool>(UserSettingConstants.PreserveFileTimestamps);
+
             // #############################
             // Picture Tab
             // #############################
@@ -1874,6 +1892,7 @@ namespace HandBrakeWPF.ViewModels
             this.userSettingService.SetUserSetting(UserSettingConstants.AutonameFilePrePostString, this.PrePostFilenameText);
             this.userSettingService.SetUserSetting(UserSettingConstants.AlwaysUseDefaultPath, this.AlwaysUseDefaultPath);
             this.userSettingService.SetUserSetting(UserSettingConstants.UseIsoDateFormat, this.UseIsoDateFormat);
+            this.userSettingService.SetUserSetting(UserSettingConstants.PreserveFileTimestamps, this.PreserveFileTimestamps);
 
             /* Previews */
             this.userSettingService.SetUserSetting(UserSettingConstants.MediaPlayerPath, this.VLCPath);

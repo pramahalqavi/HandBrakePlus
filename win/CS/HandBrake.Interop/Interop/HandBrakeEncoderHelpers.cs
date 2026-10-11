@@ -1,4 +1,4 @@
-﻿// --------------------------------------------------------------------------------------------------------------------
+// --------------------------------------------------------------------------------------------------------------------
 // <copyright file="HandBrakeEncoderHelpers.cs" company="HandBrake Project (https://handbrake.fr)">
 //   This file is part of the HandBrake source code - It may be used under the terms of the GNU General Public License.
 // </copyright>
@@ -485,14 +485,14 @@ namespace HandBrake.Interop.Interop
         /// </param>
         /// <param name="channelLayout">channel layout of the source track</param>
         /// <returns>True if available.</returns>
-        public static bool MixdownIsSupported(HBMixdown mixdown, HBAudioEncoder encoder, string layout)
+        public static bool MixdownIsSupported(HBMixdown mixdown, HBAudioEncoder encoder, ulong layout)
         {
-            IntPtr layoutptr = IntPtr.Zero;
-            if (layout != null)
-            {
-                layoutptr = InteropUtilities.ToUtf8PtrFromString(layout);
-            }
-            return HBFunctions.hb_mixdown_is_supported_s(mixdown.Id, (uint)encoder.Id, layoutptr) > 0;
+            return HBFunctions.hb_mixdown_is_supported(mixdown.Id, (uint)encoder.Id, layout) > 0;
+        }
+
+        public static bool MixdownIsSupported(HBMixdown mixdown, HBAudioEncoder encoder, long layout)
+        {
+            return MixdownIsSupported(mixdown, encoder, (ulong)layout);
         }
 
         /// <summary>
@@ -544,22 +544,25 @@ namespace HandBrake.Interop.Interop
         /// <returns>
         /// A sanitized mixdown value.
         /// </returns>
-        public static HBMixdown SanitizeMixdown(HBMixdown mixdown, HBAudioEncoder encoder, string layout)
+        public static HBMixdown SanitizeMixdown(HBMixdown mixdown, HBAudioEncoder encoder, ulong layout)
         {
-            if (mixdown == null || encoder == null || layout == null)
+            if (mixdown == null || encoder == null)
             {
                 return null;
             }
 
-            IntPtr layoutptr = InteropUtilities.ToUtf8PtrFromString(layout);
-
-            int sanitizedMixdown = HBFunctions.hb_mixdown_get_best_s((uint)encoder.Id, layoutptr, mixdown.Id);
+            int sanitizedMixdown = HBFunctions.hb_mixdown_get_best((uint)encoder.Id, layout, mixdown.Id);
             if (sanitizedMixdown != -1)
             {
                 return Mixdowns.Single(m => m.Id == sanitizedMixdown);
             }
 
             return Mixdowns.FirstOrDefault(); // "none"
+        }
+
+        public static HBMixdown SanitizeMixdown(HBMixdown mixdown, HBAudioEncoder encoder, long layout)
+        {
+            return SanitizeMixdown(mixdown, encoder, (ulong)layout);
         }
 
         /// <summary>
@@ -574,14 +577,9 @@ namespace HandBrake.Interop.Interop
         /// <returns>
         /// The default mixdown for the given codec and channel layout.
         /// </returns>
-        public static HBMixdown GetDefaultMixdown(HBAudioEncoder encoder, string layout)
+        public static HBMixdown GetDefaultMixdown(HBAudioEncoder encoder, ulong layout)
         {
-            IntPtr layoutptr = IntPtr.Zero;
-            if (layout != null)
-            {
-                layoutptr = InteropUtilities.ToUtf8PtrFromString(layout);
-            }
-            int defaultMixdown = HBFunctions.hb_mixdown_get_default_s((uint)encoder.Id, layoutptr);
+            int defaultMixdown = HBFunctions.hb_mixdown_get_default((uint)encoder.Id, layout);
             var result = Mixdowns.SingleOrDefault(m => m.Id == defaultMixdown);
             if (result == null)
             {
@@ -589,6 +587,11 @@ namespace HandBrake.Interop.Interop
             }
 
             return result;
+        }
+
+        public static HBMixdown GetDefaultMixdown(HBAudioEncoder encoder, long layout)
+        {
+            return GetDefaultMixdown(encoder, (ulong)layout);
         }
 
         /// <summary>
@@ -804,20 +807,20 @@ namespace HandBrake.Interop.Interop
             return new List<int>();
         }
 
-        public static string GetAutonameAudioTrack(string name, string layout, int mixdown, bool keep_name, int behaviour)
+        public static string GetAutonameAudioTrack(string name, ulong layout, int mixdown, bool keep_name, int behaviour)
         {
             IntPtr nameptr = IntPtr.Zero;
-            IntPtr layoutptr = IntPtr.Zero;
             if (name != null)
             {
                 nameptr = InteropUtilities.ToUtf8PtrFromString(name);
             }
-            if (layout != null)
-            {
-                layoutptr = InteropUtilities.ToUtf8PtrFromString(layout);
-            }
 
-            return Marshal.PtrToStringUTF8((IntPtr)HBFunctions.hb_audio_name_generate_s(nameptr, layoutptr, mixdown, keep_name ? 1 : 0, behaviour));
+            return Marshal.PtrToStringUTF8((IntPtr)HBFunctions.hb_audio_name_generate(nameptr, layout, mixdown, keep_name ? 1 : 0, behaviour));
+        }
+
+        public static string GetAutonameAudioTrack(string name, long layout, int mixdown, bool keep_name, int behaviour)
+        {
+            return GetAutonameAudioTrack(name, (ulong)layout, mixdown, keep_name, behaviour);
         }
     }
 }

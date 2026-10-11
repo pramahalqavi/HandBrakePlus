@@ -1,4 +1,4 @@
-﻿// --------------------------------------------------------------------------------------------------------------------
+// --------------------------------------------------------------------------------------------------------------------
 // <copyright file="SourceAudioTrack.cs" company="HandBrake Project (https://handbrake.fr)">
 //   This file is part of the HandBrake source code - It may be used under the terms of the GNU General Public License.
 // </copyright>
@@ -27,7 +27,9 @@ namespace HandBrake.Interop.Interop.Json.Scan
         /// <summary>
         /// Gets or sets the channel layout.
         /// </summary>
-        public string ChannelLayout { get; set; }
+        public long ChannelLayout { get; set; }
+
+        public string ChannelLayoutName { get; set; }
 
         /// <summary>
         /// Gets or sets the description.

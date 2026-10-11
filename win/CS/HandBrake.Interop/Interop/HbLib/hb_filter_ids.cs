@@ -1,4 +1,4 @@
-﻿// --------------------------------------------------------------------------------------------------------------------
+// --------------------------------------------------------------------------------------------------------------------
 // <copyright file="hb_filter_ids.cs" company="HandBrake Project (https://handbrake.fr)">
 //   This file is part of the HandBrake source code - It may be used under the terms of the GNU General Public License.
 // </copyright>
@@ -24,10 +24,8 @@ namespace HandBrake.Interop.Interop.HbLib
         HB_FILTER_VFR,
         // Filters that must operate on the original source image are next
         HB_FILTER_DEBLOCK,
-        HB_FILTER_DEBAND,
         HB_FILTER_DENOISE,
         HB_FILTER_HQDN3D = HB_FILTER_DENOISE,
-        HB_FILTER_BM3D,
         HB_FILTER_NLMEANS,
         HB_FILTER_CHROMA_SMOOTH,
         HB_FILTER_CHROMA_SMOOTH_VT,

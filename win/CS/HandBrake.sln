@@ -1,4 +1,4 @@
-﻿
+
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.1.32328.378
@@ -24,6 +24,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "NSIS Installer", "NSIS Inst
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HandBrake.App.Core", "HandBrake.App.Core\HandBrake.App.Core.csproj", "{F3D54128-F034-4241-BB73-AA7BBE9A47C1}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HandBrake.Mcp", "HandBrake.Mcp\HandBrake.Mcp.csproj", "{B9F8D6E1-4A5C-4F3D-9E2B-8C7A6D5E4F3A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -46,6 +48,10 @@ Global
 		{F3D54128-F034-4241-BB73-AA7BBE9A47C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F3D54128-F034-4241-BB73-AA7BBE9A47C1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F3D54128-F034-4241-BB73-AA7BBE9A47C1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B9F8D6E1-4A5C-4F3D-9E2B-8C7A6D5E4F3A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B9F8D6E1-4A5C-4F3D-9E2B-8C7A6D5E4F3A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B9F8D6E1-4A5C-4F3D-9E2B-8C7A6D5E4F3A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B9F8D6E1-4A5C-4F3D-9E2B-8C7A6D5E4F3A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
